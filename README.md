@@ -9,6 +9,11 @@ For help getting started with Flutter, view our online
 
 ## 效果图
 
-<img src="./ui/Screenshot_20181204-102537.jpg" width="320"/>
+### 聊天界面
+<img src="./ui/Screenshot_20181204-141731.jpg" width="320"/>
 
+### 发现界面
 <img src="./ui/Screenshot_20181204-102542.jpg" width="320"/>
+
+### 我的界面
+<img src="./ui/Screenshot_20181204-102537.jpg" width="320"/>
