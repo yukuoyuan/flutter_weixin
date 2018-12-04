@@ -24,6 +24,10 @@ class _MinePageState extends State<MinePage> {
         child: Column(
       children: <Widget>[
         new Container(
+          height: 20.0,
+          color: const Color(0xffebebeb),
+        ),
+        new Container(
             margin: new EdgeInsets.fromLTRB(15.0, 0.0, 32.0, 0.0),
             height: 80.0,
             child: new Row(

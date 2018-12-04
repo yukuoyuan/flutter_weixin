@@ -23,6 +23,10 @@ class _FindPageState extends State<FindPage> {
         child: Column(
       children: <Widget>[
         new Container(
+          height: 20.0,
+          color: const Color(0xffebebeb),
+        ),
+        new Container(
           height: 48.0,
           margin: new EdgeInsets.fromLTRB(12.0, 0.0, 0.0, 0.0),
           child: new Row(
