@@ -55,7 +55,13 @@ flutter:
      - images/ww_main_me_wallet.png
      - images/ww_main_me_card.png
      - images/ww_main_me_setting.png
-
+     - images/ww_main_find_friend_circle.png
+     - images/ww_main_find_scan.png
+     - images/ww_main_find_shake.png
+     - images/ww_main_find_nearby.png
+     - images/ww_main_find_bottle.png
+     - images/ww_main_find_mall.png
+     - images/ww_main_find_game.png
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.io/assets-and-images/#resolution-aware.
 
