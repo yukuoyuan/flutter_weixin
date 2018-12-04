@@ -62,6 +62,12 @@ flutter:
      - images/ww_main_find_bottle.png
      - images/ww_main_find_mall.png
      - images/ww_main_find_game.png
+     - images/ww_main_contact_new_friend.png
+     - images/ww_main_contact_group.png
+     - images/ww_main_contact_tag.png
+     - images/ww_main_contact_public_number.png
+
+
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.io/assets-and-images/#resolution-aware.
 
