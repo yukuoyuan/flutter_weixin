@@ -12,6 +12,9 @@ For help getting started with Flutter, view our online
 ### 聊天界面
 <img src="./ui/Screenshot_20181204-141731.jpg" width="320"/>
 
+### 通讯录界面
+<img src="./ui/Screenshot_20181204-154815.jpg" width="320"/>
+
 ### 发现界面
 <img src="./ui/Screenshot_20181204-102542.jpg" width="320"/>
 
