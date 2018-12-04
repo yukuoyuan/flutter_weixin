@@ -29,10 +29,6 @@ class _ContactPageState extends State<ContactPage> {
   Widget build(BuildContext context) {
     return Column(
       children: <Widget>[
-        getHeightItems(newFriend, '新的朋友'),
-        getHeightItems(group, '群聊'),
-        getHeightItems(tag, '标签'),
-        getHeightItems(publicNumber, '公众号'),
         Expanded(
             flex: 1,
             child: QuickSelectListView(
@@ -42,6 +38,21 @@ class _ContactPageState extends State<ContactPage> {
               isUseRealIndex: true,
               itemHeight: 60,
               suspensionHeight: 20,
+              header: QuickSelectListViewHeader(
+                  tag: "★",
+                  builder: (context) {
+                    return Container(
+                      child: Column(
+                        children: <Widget>[
+                          getHeightItems(newFriend, '新的朋友'),
+                          getHeightItems(group, '群聊'),
+                          getHeightItems(tag, '标签'),
+                          getHeightItems(publicNumber, '公众号'),
+                        ],
+                      ),
+                    );
+                  },
+                  height: 204),
               onSusTagChanged: _onSusTagChanged,
               //showCenterTip: false,
             )),
