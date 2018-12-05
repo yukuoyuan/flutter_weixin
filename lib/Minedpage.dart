@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_weixin/UserInfoPage.dart';
 
 class MinePage extends StatefulWidget {
   @override
@@ -27,32 +28,35 @@ class _MinePageState extends State<MinePage> {
           height: 20.0,
           color: const Color(0xffebebeb),
         ),
-        new Container(
-            margin: new EdgeInsets.fromLTRB(15.0, 0.0, 32.0, 0.0),
-            height: 80.0,
-            child: new Row(
-              children: <Widget>[
-                new Image.asset(defaultAvatar, width: 64.0, height: 64.0),
-                new Expanded(
-                    child: new Container(
-                  margin: new EdgeInsets.fromLTRB(16.0, 12.0, 0.0, 0.0),
-                  child: new Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: <Widget>[
-                      new Text(
-                        'yuko',
-                        style: new TextStyle(
-                            color: const Color(0xff353535), fontSize: 16.0),
-                      ),
-                      new Text('微信号:yukuoyuan',
+        new GestureDetector(
+          onTap: _startUserInfoPage,
+          child: new Container(
+              margin: new EdgeInsets.fromLTRB(15.0, 0.0, 32.0, 0.0),
+              height: 80.0,
+              child: new Row(
+                children: <Widget>[
+                  new Image.asset(defaultAvatar, width: 64.0, height: 64.0),
+                  new Expanded(
+                      child: new Container(
+                    margin: new EdgeInsets.fromLTRB(16.0, 12.0, 0.0, 0.0),
+                    child: new Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: <Widget>[
+                        new Text(
+                          'yuko',
                           style: new TextStyle(
-                              color: const Color(0xffaaaaaa), fontSize: 14.0))
-                    ],
-                  ),
-                )),
-                new Image.asset(qrCodeImg, width: 18.0, height: 18.0),
-              ],
-            )),
+                              color: const Color(0xff353535), fontSize: 16.0),
+                        ),
+                        new Text('微信号:yukuoyuan',
+                            style: new TextStyle(
+                                color: const Color(0xffaaaaaa), fontSize: 14.0))
+                      ],
+                    ),
+                  )),
+                  new Image.asset(qrCodeImg, width: 18.0, height: 18.0),
+                ],
+              )),
+        ),
         new Container(
           height: 20.0,
           color: const Color(0xffebebeb),
@@ -167,5 +171,15 @@ class _MinePageState extends State<MinePage> {
         )
       ],
     ));
+  }
+
+  ///
+  /// 跳转到用户个人信息界面
+  ///
+  _startUserInfoPage() {
+    Navigator.push(
+      context,
+      new MaterialPageRoute(builder: (context) => new UserInfoPage()),
+    );
   }
 }
