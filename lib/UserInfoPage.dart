@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_weixin/EditUserInfoPage.dart';
 
 class UserInfoPage extends StatefulWidget {
   @override
@@ -10,6 +11,7 @@ class UserInfoPage extends StatefulWidget {
 class _UserInfoPageState extends State<UserInfoPage> {
   var defaultAvatar = 'images/ww_default_avatar.png';
   var qrCodeImg = 'images/ww_main_me_qrcode.png';
+  var nikeName = 'Martian Yu';
 
   @override
   Widget build(BuildContext context) {
@@ -52,27 +54,30 @@ class _UserInfoPageState extends State<UserInfoPage> {
                 height: 1.0,
                 color: const Color(0xffebebeb),
               ),
-              new Container(
-                margin: new EdgeInsets.fromLTRB(20.0, 0.0, 0.0, 0.0),
-                height: 48.0,
-                child: new Row(
-                  children: <Widget>[
-                    new Expanded(
-                      child: new Text(
-                        '昵称',
-                        style: TextStyle(
-                            fontSize: 16.0, color: const Color(0xff353535)),
+              new GestureDetector(
+                onTap: _startEditUserInfoPage,
+                child: new Container(
+                  margin: new EdgeInsets.fromLTRB(20.0, 0.0, 0.0, 0.0),
+                  height: 48.0,
+                  child: new Row(
+                    children: <Widget>[
+                      new Expanded(
+                        child: new Text(
+                          '昵称',
+                          style: TextStyle(
+                              fontSize: 16.0, color: const Color(0xff353535)),
+                        ),
                       ),
-                    ),
-                    new Padding(
-                      padding: new EdgeInsets.fromLTRB(0.0, 0.0, 20.0, 0.0),
-                      child: new Text(
-                        'yuko',
-                        style: TextStyle(
-                            fontSize: 16.0, color: const Color(0xffAAAAAA)),
+                      new Padding(
+                        padding: new EdgeInsets.fromLTRB(0.0, 0.0, 20.0, 0.0),
+                        child: new Text(
+                          '$nikeName',
+                          style: TextStyle(
+                              fontSize: 16.0, color: const Color(0xffAAAAAA)),
+                        ),
                       ),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
               ),
               new Container(
@@ -219,5 +224,16 @@ class _UserInfoPageState extends State<UserInfoPage> {
             ],
           ),
         ));
+  }
+
+  _startEditUserInfoPage() async {
+    final result = await Navigator.push(
+      context,
+      new MaterialPageRoute(builder: (context) => new EditUserInfoPage()),
+    );
+//     final result = await
+    setState(() {
+      this.nikeName = result;
+    });
   }
 }
