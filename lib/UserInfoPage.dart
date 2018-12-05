@@ -190,22 +190,22 @@ class _UserInfoPageState extends State<UserInfoPage> {
               ),
               new Container(
                 margin: new EdgeInsets.fromLTRB(20.0, 0.0, 0.0, 0.0),
-                height: 48.0,
                 child: new Row(
                   children: <Widget>[
-                    new Expanded(
-                      child: new Text(
-                        '个性签名',
-                        style: TextStyle(
-                            fontSize: 16.0, color: const Color(0xff353535)),
-                      ),
+                    new Text(
+                      '个性签名',
+                      style: TextStyle(
+                          fontSize: 16.0, color: const Color(0xff353535)),
                     ),
-                    new Padding(
-                      padding: new EdgeInsets.fromLTRB(0.0, 0.0, 20.0, 0.0),
-                      child: new Text(
-                        '男人要么拎枪保家卫国,要么办公室运筹帷幄',
-                        style: TextStyle(
-                            fontSize: 16.0, color: const Color(0xffAAAAAA)),
+                    new Expanded(
+                      child: new Padding(
+                        padding: new EdgeInsets.fromLTRB(0.0, 15.0, 20.0, 15.0),
+                        child: new Text(
+                          '男人要么拎枪保家卫国,要么办公室运筹帷幄',
+                          textAlign: TextAlign.right,
+                          style: TextStyle(
+                              fontSize: 16.0, color: const Color(0xffAAAAAA)),
+                        ),
                       ),
                     ),
                   ],
