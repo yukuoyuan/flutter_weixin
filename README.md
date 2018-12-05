@@ -59,3 +59,13 @@ For help getting started with Flutter, view our online
 </th>
 </tr>
 </table>
+
+### 修改个人信息
+<table>
+<tr>
+<th>
+<img src="./ui/Screenshot_20181205-150823.jpg" width="320"/></th>
+<th><img src="./ui/SimulatorScreenShot-iPhoneXR-2018-12-05at15.06.34.png" width="320"/>
+</th>
+</tr>
+</table>
