@@ -66,7 +66,10 @@ flutter:
      - images/ww_main_contact_group.png
      - images/ww_main_contact_tag.png
      - images/ww_main_contact_public_number.png
-
+     - images/ww_main_popu_add_group.png
+     - images/ww_main_popu_add_friends.png
+     - images/ww_main_popu_add_scan.png
+     - images/ww_main_popu_add_fadeback.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.io/assets-and-images/#resolution-aware.
