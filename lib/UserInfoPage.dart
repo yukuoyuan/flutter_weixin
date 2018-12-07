@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_weixin/CheckSexDialog.dart';
 import 'package:flutter_weixin/EditUserInfoPage.dart';
 
 class UserInfoPage extends StatefulWidget {
@@ -12,6 +13,7 @@ class _UserInfoPageState extends State<UserInfoPage> {
   var defaultAvatar = 'images/ww_default_avatar.png';
   var qrCodeImg = 'images/ww_main_me_qrcode.png';
   var nikeName = 'Martian Yu';
+  int groupValue = 1;
 
   @override
   Widget build(BuildContext context) {
@@ -137,27 +139,30 @@ class _UserInfoPageState extends State<UserInfoPage> {
                 height: 20.0,
                 color: const Color(0xffebebeb),
               ),
-              new Container(
-                margin: new EdgeInsets.fromLTRB(20.0, 0.0, 0.0, 0.0),
-                height: 48.0,
-                child: new Row(
-                  children: <Widget>[
-                    new Expanded(
-                      child: new Text(
-                        '性别',
-                        style: TextStyle(
-                            fontSize: 16.0, color: const Color(0xff353535)),
+              new GestureDetector(
+                onTap: _showCheckSexDiaolog,
+                child: new Container(
+                  margin: new EdgeInsets.fromLTRB(20.0, 0.0, 0.0, 0.0),
+                  height: 48.0,
+                  child: new Row(
+                    children: <Widget>[
+                      new Expanded(
+                        child: new Text(
+                          '性别',
+                          style: TextStyle(
+                              fontSize: 16.0, color: const Color(0xff353535)),
+                        ),
                       ),
-                    ),
-                    new Padding(
-                      padding: new EdgeInsets.fromLTRB(0.0, 0.0, 20.0, 0.0),
-                      child: new Text(
-                        '男',
-                        style: TextStyle(
-                            fontSize: 16.0, color: const Color(0xffAAAAAA)),
+                      new Padding(
+                        padding: new EdgeInsets.fromLTRB(0.0, 0.0, 20.0, 0.0),
+                        child: new Text(
+                          groupValue == 1 ? '男' : '女',
+                          style: TextStyle(
+                              fontSize: 16.0, color: const Color(0xffAAAAAA)),
+                        ),
                       ),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
               ),
               new Container(
@@ -231,9 +236,30 @@ class _UserInfoPageState extends State<UserInfoPage> {
       context,
       new MaterialPageRoute(builder: (context) => new EditUserInfoPage()),
     );
-//     final result = await
     setState(() {
       this.nikeName = result;
+    });
+  }
+
+  ///
+  /// 展示选择性别的弹窗
+  ///
+  _showCheckSexDiaolog() {
+    showDialog<Null>(
+        context: context, //BuildContext对象
+        barrierDismissible: true,
+        builder: (BuildContext context) {
+          return new CheckSexDialog(
+            groupValue: groupValue,
+            onChanged: (int e) => updateGroupValue(e),
+          );
+        });
+  }
+
+  updateGroupValue(int e) {
+    Navigator.pop(context);
+    setState(() {
+      this.groupValue = e;
     });
   }
 }
