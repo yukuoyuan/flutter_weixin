@@ -69,3 +69,13 @@ For help getting started with Flutter, view our online
 </th>
 </tr>
 </table>
+
+### 首页更多的弹窗
+<table>
+<tr>
+<th>
+<img src="./ui/Screenshot_20181211-140552.jpg" width="320"/></th>
+<th><img src="./ui/SimulatorScreenShot-iPhoneXR-2018-12-11at14.10.57.png" width="320"/>
+</th>
+</tr>
+</table>
