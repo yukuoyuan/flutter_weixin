@@ -71,86 +71,87 @@ class _HomePageState extends State<HomePage> {
                 ),
                 onPressed: () {},
               ),
-              new PopupMenuButton(
-                offset: const Offset(0.0, 60.0),
-                icon: new Icon(Icons.add, color: Colors.white),
-                itemBuilder: (BuildContext context) => <PopupMenuItem<String>>[
-                      new PopupMenuItem<String>(
-                          value: '选项一的值',
-                          child: new Container(
-                              color: const Color(0xff22292C),
-                              child: new Column(
-                                children: <Widget>[
-                                  new Row(
+              new Theme(
+                  data: Theme.of(context).copyWith(
+                    cardColor: const Color(0xff22292C),
+                  ),
+                  child: new PopupMenuButton(
+                    offset: const Offset(0.0, 60.0),
+                    icon: new Icon(Icons.add, color: Colors.white),
+                    itemBuilder: (BuildContext context) =>
+                        <PopupMenuItem<String>>[
+                          new PopupMenuItem<String>(
+                              value: '选项一的值',
+                              child: new Container(
+                                  child: new Column(
                                     children: <Widget>[
-                                      new Image.asset(group,
-                                          width: 30.0, height: 30.0),
-                                      new Text(
-                                        '发起群聊',
-                                        style: TextStyle(
-                                            color: Colors.white,
-                                            fontSize: 16.0),
-                                      )
+                                      new Row(
+                                        children: <Widget>[
+                                          new Image.asset(group,
+                                              width: 30.0, height: 30.0),
+                                          new Text(
+                                            '发起群聊',
+                                            style: TextStyle(
+                                                color: Colors.white,
+                                                fontSize: 16.0),
+                                          )
+                                        ],
+                                      ),
                                     ],
-                                  ),
-                                ],
-                              ))),
-                      new PopupMenuItem<String>(
-                          value: '选项一的值',
-                          child: new Container(
-                              color: const Color(0xff22292C),
-                              child: new Column(
-                                children: <Widget>[
-                                  new Row(
+                                  ))),
+                          new PopupMenuItem<String>(
+                              value: '选项一的值',
+                              child: new Container(
+                                  child: new Column(
                                     children: <Widget>[
-                                      new Image.asset(friends,
-                                          width: 30.0, height: 30.0),
-                                      new Text('添加朋友',
-                                          style: TextStyle(
-                                              color: Colors.white,
-                                              fontSize: 16.0))
+                                      new Row(
+                                        children: <Widget>[
+                                          new Image.asset(friends,
+                                              width: 30.0, height: 30.0),
+                                          new Text('添加朋友',
+                                              style: TextStyle(
+                                                  color: Colors.white,
+                                                  fontSize: 16.0))
+                                        ],
+                                      ),
                                     ],
-                                  ),
-                                ],
-                              ))),
-                      new PopupMenuItem<String>(
-                          value: '选项一的值',
-                          child: new Container(
-                              color: const Color(0xff22292C),
-                              child: new Column(
-                                children: <Widget>[
-                                  new Row(
+                                  ))),
+                          new PopupMenuItem<String>(
+                              value: '选项一的值',
+                              child: new Container(
+                                  child: new Column(
                                     children: <Widget>[
-                                      new Image.asset(scan,
-                                          width: 30.0, height: 30.0),
-                                      new Text('扫一扫',
-                                          style: TextStyle(
-                                              color: Colors.white,
-                                              fontSize: 16.0))
+                                      new Row(
+                                        children: <Widget>[
+                                          new Image.asset(scan,
+                                              width: 30.0, height: 30.0),
+                                          new Text('扫一扫',
+                                              style: TextStyle(
+                                                  color: Colors.white,
+                                                  fontSize: 16.0))
+                                        ],
+                                      ),
                                     ],
-                                  ),
-                                ],
-                              ))),
-                      new PopupMenuItem<String>(
-                          value: '选项一的值',
-                          child: new Container(
-                              color: const Color(0xff22292C),
-                              child: new Column(
-                                children: <Widget>[
-                                  new Row(
+                                  ))),
+                          new PopupMenuItem<String>(
+                              value: '选项一的值',
+                              child: new Container(
+                                  child: new Column(
                                     children: <Widget>[
-                                      new Image.asset(feedback,
-                                          width: 30.0, height: 30.0),
-                                      new Text('帮助与反馈',
-                                          style: TextStyle(
-                                              color: Colors.white,
-                                              fontSize: 16.0))
+                                      new Row(
+                                        children: <Widget>[
+                                          new Image.asset(feedback,
+                                              width: 30.0, height: 30.0),
+                                          new Text('帮助与反馈',
+                                              style: TextStyle(
+                                                  color: Colors.white,
+                                                  fontSize: 16.0))
+                                        ],
+                                      ),
                                     ],
-                                  ),
-                                ],
-                              ))),
-                    ],
-              ),
+                                  ))),
+                        ],
+                  )),
             ]),
         body: new Container(
           child: _getBody(),
