@@ -3,6 +3,9 @@ import 'package:flutter_weixin/Contactpage.dart';
 import 'package:flutter_weixin/Findpage.dart';
 import 'package:flutter_weixin/Homepage.dart';
 import 'package:flutter_weixin/Minedpage.dart';
+import 'package:barcode_scan/barcode_scan.dart';
+import 'package:flutter/services.dart';
+import 'dart:async';
 
 void main() => runApp(new MyApp());
 
@@ -54,6 +57,9 @@ class _HomePageState extends State<HomePage> {
   var scan = 'images/ww_main_popu_add_scan.png';
   var feedback = 'images/ww_main_popu_add_fadeback.png';
 
+  ///二维码扫描后的路径
+  String barcode = "";
+
   @override
   Widget build(BuildContext context) {
     _initData();
@@ -78,78 +84,80 @@ class _HomePageState extends State<HomePage> {
                   child: new PopupMenuButton(
                     offset: const Offset(0.0, 60.0),
                     icon: new Icon(Icons.add, color: Colors.white),
-                    itemBuilder: (BuildContext context) =>
-                        <PopupMenuItem<String>>[
-                          new PopupMenuItem<String>(
-                              value: '选项一的值',
+                    onSelected: (int value) {
+                      startMenuButton(value,context);
+                    },
+                    itemBuilder: (BuildContext context) => <PopupMenuItem<int>>[
+                          new PopupMenuItem<int>(
+                              value: 0,
                               child: new Container(
                                   child: new Column(
+                                children: <Widget>[
+                                  new Row(
                                     children: <Widget>[
-                                      new Row(
-                                        children: <Widget>[
-                                          new Image.asset(group,
-                                              width: 30.0, height: 30.0),
-                                          new Text(
-                                            '发起群聊',
-                                            style: TextStyle(
-                                                color: Colors.white,
-                                                fontSize: 16.0),
-                                          )
-                                        ],
-                                      ),
+                                      new Image.asset(group,
+                                          width: 30.0, height: 30.0),
+                                      new Text(
+                                        '发起群聊',
+                                        style: TextStyle(
+                                            color: Colors.white,
+                                            fontSize: 16.0),
+                                      )
                                     ],
-                                  ))),
-                          new PopupMenuItem<String>(
-                              value: '选项一的值',
+                                  ),
+                                ],
+                              ))),
+                          new PopupMenuItem<int>(
+                              value: 1,
                               child: new Container(
                                   child: new Column(
+                                children: <Widget>[
+                                  new Row(
                                     children: <Widget>[
-                                      new Row(
-                                        children: <Widget>[
-                                          new Image.asset(friends,
-                                              width: 30.0, height: 30.0),
-                                          new Text('添加朋友',
-                                              style: TextStyle(
-                                                  color: Colors.white,
-                                                  fontSize: 16.0))
-                                        ],
-                                      ),
+                                      new Image.asset(friends,
+                                          width: 30.0, height: 30.0),
+                                      new Text('添加朋友',
+                                          style: TextStyle(
+                                              color: Colors.white,
+                                              fontSize: 16.0))
                                     ],
-                                  ))),
-                          new PopupMenuItem<String>(
-                              value: '选项一的值',
+                                  ),
+                                ],
+                              ))),
+                          new PopupMenuItem<int>(
+                              value: 2,
                               child: new Container(
                                   child: new Column(
+                                children: <Widget>[
+                                  new Row(
                                     children: <Widget>[
-                                      new Row(
-                                        children: <Widget>[
-                                          new Image.asset(scan,
-                                              width: 30.0, height: 30.0),
-                                          new Text('扫一扫',
-                                              style: TextStyle(
-                                                  color: Colors.white,
-                                                  fontSize: 16.0))
-                                        ],
-                                      ),
+                                      new Image.asset(scan,
+                                          width: 30.0, height: 30.0),
+                                      new Text('扫一扫',
+                                          style: TextStyle(
+                                              color: Colors.white,
+                                              fontSize: 16.0))
                                     ],
-                                  ))),
-                          new PopupMenuItem<String>(
-                              value: '选项一的值',
+                                  ),
+                                ],
+                              ))),
+                          new PopupMenuItem<int>(
+                              value: 3,
                               child: new Container(
                                   child: new Column(
+                                children: <Widget>[
+                                  new Row(
                                     children: <Widget>[
-                                      new Row(
-                                        children: <Widget>[
-                                          new Image.asset(feedback,
-                                              width: 30.0, height: 30.0),
-                                          new Text('帮助与反馈',
-                                              style: TextStyle(
-                                                  color: Colors.white,
-                                                  fontSize: 16.0))
-                                        ],
-                                      ),
+                                      new Image.asset(feedback,
+                                          width: 30.0, height: 30.0),
+                                      new Text('帮助与反馈',
+                                          style: TextStyle(
+                                              color: Colors.white,
+                                              fontSize: 16.0))
                                     ],
-                                  ))),
+                                  ),
+                                ],
+                              ))),
                         ],
                   )),
             ]),
@@ -275,5 +283,48 @@ class _HomePageState extends State<HomePage> {
     setState(() {
       this.index = value;
     });
+  }
+
+  ///
+  /// 菜单按钮点击的事件
+  ///
+  startMenuButton(int value, BuildContext context) {
+    switch (value) {
+      case 0:
+        break;
+      case 1:
+        break;
+      case 2:
+        startScan();
+        break;
+      case 3:
+        break;
+    }
+  }
+
+  ///
+  /// 跳转到扫描二维码界面
+  ///
+  Future startScan() async {
+    try {
+      String barcode = await BarcodeScanner.scan();
+      print("二维码信息内容" + barcode);
+      setState(() {
+        this.barcode = barcode;
+      });
+    } on PlatformException catch (e) {
+      if (e.code == BarcodeScanner.CameraAccessDenied) {
+        setState(() {
+          this.barcode = 'The user did not grant the camera permission!';
+        });
+      } else {
+        setState(() => this.barcode = 'Unknown error: $e');
+      }
+    } on FormatException {
+      setState(() => this.barcode =
+          'null (User returned using the "back"-button before scanning anything. Result)');
+    } catch (e) {
+      setState(() => this.barcode = 'Unknown error: $e');
+    }
   }
 }
