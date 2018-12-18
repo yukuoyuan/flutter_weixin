@@ -81,6 +81,7 @@ class _ChatPageState extends State<ChatPage> {
   ///
   getoutValue(String inputValue) {
     String value = inputValue;
+    value = value.replaceAll('我', '你');
     value = value.replaceAll('吗', '');
     value = value.replaceAll('?', '!');
     value = value.replaceAll('？', '!');
