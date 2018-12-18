@@ -14,8 +14,8 @@ For help getting started with Flutter, view our online
 
 <table>
 <tr>
-<th><img src="./ui/weixin.gif" width="320"/></th>
 <th><img src="./ui/weixin_android.gif" width="320"/></th>
+<th><img src="./ui/weixin.gif" width="320"/></th>
 </tr>
 </table>
 
