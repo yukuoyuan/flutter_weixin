@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_weixin/chatpage.dart';
 
 class WangWangPage extends StatefulWidget {
   @override
@@ -8,7 +9,6 @@ class WangWangPage extends StatefulWidget {
 }
 
 class _WangWangPageState extends State<WangWangPage> {
-  var defaultAvatar = 'images/ww_default_avatar.png';
   var name = '';
   var desc = '';
 
@@ -53,55 +53,98 @@ class _WangWangPageState extends State<WangWangPage> {
         name = '张三';
         break;
     }
-    return new Container(
-      child: new Column(
-        children: <Widget>[
-          new Container(
-            height: 60.0,
-            margin: new EdgeInsets.fromLTRB(15.0, 0.0, 0.0, 0.0),
-            child: new Row(
-              children: <Widget>[
-                new Image.asset(defaultAvatar, width: 44.0, height: 44.0),
-                new Expanded(
-                    child: new Container(
-                        height: 40.0,
-                        alignment: Alignment.centerLeft,
-                        margin: new EdgeInsets.fromLTRB(15.0, 0.0, 0.0, 0.0),
-                        child: new Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: <Widget>[
-                            new Text(
-                              '$name',
-                              style: TextStyle(fontSize: 15.0),
-                            ),
-                            new Text(
-                              '$desc',
-                              style: TextStyle(
-                                  fontSize: 12.0,
-                                  color: const Color(0xffaaaaaa)),
-                            ),
-                          ],
-                        ))),
-                new Padding(
-                  padding: new EdgeInsets.fromLTRB(0.0, 0.0, 15.0, 0.0),
-                  child: new Text(
-                    '13:30',
-                    style: TextStyle(
-                      fontSize: 10.0,
-                      color: const Color(0xffaaaaaa),
+    return ChatListItem(position, name, desc);
+  }
+}
+
+class ChatListItem extends StatefulWidget {
+  int position;
+  String name;
+  String desc;
+
+  ChatListItem(this.position, this.name, this.desc);
+
+  @override
+  State<StatefulWidget> createState() {
+    // TODO: implement createState
+    return _ChatListItemState(position, name, desc);
+  }
+}
+
+class _ChatListItemState extends State<ChatListItem> {
+  int position;
+  String name;
+  String desc;
+  var defaultAvatar = 'images/ww_default_avatar.png';
+
+  _ChatListItemState(this.position, this.name, this.desc);
+
+  @override
+  Widget build(BuildContext context) {
+    // TODO: implement build
+    return new GestureDetector(
+      child: new Container(
+        child: new Column(
+          children: <Widget>[
+            new Container(
+              height: 60.0,
+              margin: new EdgeInsets.fromLTRB(15.0, 0.0, 0.0, 0.0),
+              child: new Row(
+                children: <Widget>[
+                  new Image.asset(defaultAvatar, width: 44.0, height: 44.0),
+                  new Expanded(
+                      child: new Container(
+                          height: 40.0,
+                          alignment: Alignment.centerLeft,
+                          margin: new EdgeInsets.fromLTRB(15.0, 0.0, 0.0, 0.0),
+                          child: new Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: <Widget>[
+                              new Text(
+                                '$name',
+                                style: TextStyle(fontSize: 15.0),
+                              ),
+                              new Text(
+                                '$desc',
+                                style: TextStyle(
+                                    fontSize: 12.0,
+                                    color: const Color(0xffaaaaaa)),
+                              ),
+                            ],
+                          ))),
+                  new Padding(
+                    padding: new EdgeInsets.fromLTRB(0.0, 0.0, 15.0, 0.0),
+                    child: new Text(
+                      '13:30',
+                      style: TextStyle(
+                        fontSize: 10.0,
+                        color: const Color(0xffaaaaaa),
+                      ),
                     ),
-                  ),
-                )
-              ],
+                  )
+                ],
+              ),
             ),
-          ),
-          new Container(
-            margin: new EdgeInsets.fromLTRB(12.0, 0.0, 12.0, 0.0),
-            height: 0.5,
-            color: const Color(0xffebebeb),
-          ),
-        ],
+            new Container(
+              margin: new EdgeInsets.fromLTRB(12.0, 0.0, 12.0, 0.0),
+              height: 0.5,
+              color: const Color(0xffebebeb),
+            ),
+          ],
+        ),
       ),
+      onTap: _toChatPage,
+    );
+  }
+
+  ///
+  /// 跳转聊天界面
+  ///
+  ///
+  _toChatPage() {
+    Navigator.push(
+      context,
+      new MaterialPageRoute(builder: (context) => new ChatPage()),
     );
   }
 }
