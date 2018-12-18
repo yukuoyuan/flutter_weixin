@@ -11,7 +11,13 @@ For help getting started with Flutter, view our online
 
 ## 效果图(左侧是android,右侧是ios)
 
-<img src="./ui/weixin.gif" width="320"/>
+
+<table>
+<tr>
+<th><img src="./ui/weixin.gif" width="320"/></th>
+<th><img src="./ui/weixin_android.gif" width="320"/></th>
+</tr>
+</table>
 
 ### 聊天界面
 <table>
